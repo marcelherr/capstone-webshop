@@ -1,6 +1,5 @@
 package org.example.backend.products.models;
 
-
 import lombok.With;
 import org.springframework.data.mongodb.core.mapping.Document;
 
