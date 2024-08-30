@@ -1,11 +1,10 @@
 package org.example.backend.products.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.example.backend.products.dto.ProductDto;
 import org.example.backend.products.models.Product;
 import org.example.backend.products.services.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +20,10 @@ public class ProductController {
     @GetMapping
     public List<Product> getProducts() {
         return productService.getAllProducts();
+    }
+
+    @PostMapping
+    public Product addABook(@RequestBody ProductDto productDto) {
+        return productService.saveProduct(productDto);
     }
 }

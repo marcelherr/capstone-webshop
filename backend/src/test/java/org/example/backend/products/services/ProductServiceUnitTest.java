@@ -13,7 +13,8 @@ import static org.mockito.Mockito.*;
 class ProductServiceUnitTest {
 
     private final ProductRepository productRepository = mock(ProductRepository.class);
-    private final ProductService productService = new ProductService(productRepository);
+    private final IdService idService = mock(IdService.class);
+    private final ProductService productService = new ProductService(productRepository, idService);
 
     @Test
     void getAllProducts_Test() {
