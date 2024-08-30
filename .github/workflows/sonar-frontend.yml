@@ -1,4 +1,4 @@
-name: capstone-webshop-frontend
+name: sonar-frontend
 on:
   push:
     branches:
