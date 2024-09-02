@@ -3,6 +3,7 @@ package org.example.backend.products.services;
 import lombok.RequiredArgsConstructor;
 import org.example.backend.products.dto.ProductDto;
 import org.example.backend.products.models.Product;
+import org.example.backend.products.models.ProductNotFoundException;
 import org.example.backend.products.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,15 @@ public class ProductService {
                 productDto.name()
         );
         return productRepository.save(productToSave);
+    }
+
+    public Product getProductById(String id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("No product found with id: " + id));
+    }
+
+    public void deleteProduct(String id) {
+        productRepository.deleteById(id);
     }
 
 }

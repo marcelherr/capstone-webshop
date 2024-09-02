@@ -2,13 +2,16 @@ package org.example.backend.products.services;
 
 import org.example.backend.products.dto.ProductDto;
 import org.example.backend.products.models.Product;
+import org.example.backend.products.models.ProductNotFoundException;
 import org.example.backend.products.repositories.ProductRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 class ProductServiceUnitTest {
@@ -48,21 +51,40 @@ class ProductServiceUnitTest {
     @Test
     void addProductTest_whenNewProductAsInput_thenReturnNewProduct() {
 
-        // GIVEN
         ProductDto productDto = new ProductDto("TestProduct1");
         Product productToSave = new Product("1", productDto.name());
         when(productRepository.save(productToSave)).thenReturn(productToSave);
         when(idService.randomId()).thenReturn(productToSave.id());
 
-        // WHEN
         Product actual = productService.saveProduct(productDto);
 
-        // THEN
         Product expected = new Product("1", productDto.name());
         verify(productRepository).save(productToSave);
         verify(idService).randomId();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void getProduct_Test_whenProductExists_thenReturnProduct() {
+
+        Product product = new Product("1", "TestProduct1");
+        when(productRepository.findById("1")).thenReturn(Optional.of(product));
+
+        Product actual = productService.getProductById("1");
+
+        Product expected = new Product("1", "TestProduct1");
+        verify(productRepository).findById("1");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getProduct_Test_whenProductDoesNotExists_thenThrow() {
+
+        when(productRepository.findById("1")).thenReturn(Optional.empty());
+     
+        assertThrows(ProductNotFoundException.class, () -> productService.getProductById("1"));
+        verify(productRepository).findById("1");
     }
 }
 
