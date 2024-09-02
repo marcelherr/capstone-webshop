@@ -12,10 +12,13 @@ export default function ProductGallery({data}: ProductGalleryProps) {
     }
 
     return (
-        <ul className="product-list">
-            {data.map((product) => (
-                <ProductCard key={product.id} product={product}/>
-            ))}
-        </ul>
+        <>
+            <h2>All Products</h2>
+            <ul className="product-list">
+                {data.map((product) => (
+                    <ProductCard key={product.id} product={product}/>
+                ))}
+            </ul>
+        </>
     );
 }
