@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/products")
@@ -23,7 +22,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product addABook(@RequestBody ProductDto productDto) {
+    public Product addProduct(@RequestBody ProductDto productDto) {
         return productService.saveProduct(productDto);
     }
 }

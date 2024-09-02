@@ -31,7 +31,7 @@ class ProductControllerIntegrationTest {
 
     @Test
     @DirtiesContext
-    void addAProductTest_whenNewProductExists_thenReturnNewProduct() throws Exception {
+    void addProductTest_whenNewProductExists_thenReturnNewProduct() throws Exception {
 
         mockMvc.perform(post("/api/products")
                         .contentType(MediaType.APPLICATION_JSON)
