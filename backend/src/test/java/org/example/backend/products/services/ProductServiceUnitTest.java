@@ -1,5 +1,6 @@
 package org.example.backend.products.services;
 
+import org.example.backend.products.dto.ProductDto;
 import org.example.backend.products.models.Product;
 import org.example.backend.products.repositories.ProductRepository;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,8 @@ import static org.mockito.Mockito.*;
 class ProductServiceUnitTest {
 
     private final ProductRepository productRepository = mock(ProductRepository.class);
-    private final ProductService productService = new ProductService(productRepository);
+    private final IdService idService = mock(IdService.class);
+    private final ProductService productService = new ProductService(productRepository, idService);
 
     @Test
     void getAllProducts_Test() {
@@ -36,11 +38,31 @@ class ProductServiceUnitTest {
     }
 
     @Test
-    void getAllBooks_WhenEmpty_ReturnsEmptyList() {
-        List<Product> actualBooks = productService.getAllProducts();
-        List<Product> expectedBooks = new ArrayList<>();
+    void getAllProducts_WhenEmpty_ReturnsEmptyList() {
+        List<Product> actualProducts = productService.getAllProducts();
+        List<Product> expectedProducts = new ArrayList<>();
 
-        assertEquals(expectedBooks, actualBooks);
+        assertEquals(expectedProducts, actualProducts);
     }
 
+    @Test
+    void addProductTest_whenNewProductAsInput_thenReturnNewProduct() {
+
+        // GIVEN
+        ProductDto productDto = new ProductDto("TestProduct1");
+        Product productToSave = new Product("1", productDto.name());
+        when(productRepository.save(productToSave)).thenReturn(productToSave);
+        when(idService.randomId()).thenReturn(productToSave.id());
+
+        // WHEN
+        Product actual = productService.saveProduct(productDto);
+
+        // THEN
+        Product expected = new Product("1", productDto.name());
+        verify(productRepository).save(productToSave);
+        verify(idService).randomId();
+
+        assertEquals(expected, actual);
+    }
 }
+

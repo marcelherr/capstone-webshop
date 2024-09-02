@@ -4,6 +4,9 @@ import axios from "axios"
 import {useEffect, useState} from "react";
 import {Product} from "./types/types.tsx";
 import Header from "./components/header/Header.tsx";
+import {Route, Routes} from "react-router-dom";
+import Navigation from "./components/navigation/Navigation.tsx";
+import AddProductPage from "./pages/AddProductPage/addProductPage/AddProductPage.tsx";
 
 export default function App() {
 
@@ -19,8 +22,6 @@ export default function App() {
             })
     }
 
-    console.log(data)
-
     useEffect(() => {
         fetchProducts()
     }, []);
@@ -28,8 +29,13 @@ export default function App() {
     return (
         <>
             <Header/>
+            <Navigation/>
             <main>
-                <ProductGallery data={data}/>
+                <Routes>
+                    <Route path={"/"} element={<ProductGallery data={data}/>}/>
+                    <Route path={"/products/add"} element={<AddProductPage fetchProducts={fetchProducts}/>}/>
+                </Routes>
+
             </main>
         </>
     )
