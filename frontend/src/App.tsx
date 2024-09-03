@@ -7,6 +7,7 @@ import Header from "./components/header/Header.tsx";
 import {Route, Routes} from "react-router-dom";
 import Navigation from "./components/navigation/Navigation.tsx";
 import AddProductPage from "./pages/AddProductPage/addProductPage/AddProductPage.tsx";
+import ProductDetailsPage from "./pages/ProductDetailsPage/productDetailsPage/ProductDetailsPage.tsx";
 
 export default function App() {
 
@@ -22,6 +23,12 @@ export default function App() {
             })
     }
 
+    const deleteProduct = (id: string) => {
+        axios.delete("/api/products/" + id)
+            .then((response) => response.status === 200 && fetchProducts())
+            .catch((error) => console.log(error.message))
+    }
+
     useEffect(() => {
         fetchProducts()
     }, []);
@@ -34,8 +41,9 @@ export default function App() {
                 <Routes>
                     <Route path={"/"} element={<ProductGallery data={data}/>}/>
                     <Route path={"/products/add"} element={<AddProductPage fetchProducts={fetchProducts}/>}/>
+                    <Route path={"/products/:id"}
+                           element={<ProductDetailsPage deleteProduct={deleteProduct}/>}/>
                 </Routes>
-
             </main>
         </>
     )
