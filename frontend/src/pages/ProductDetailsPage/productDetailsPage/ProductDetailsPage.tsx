@@ -9,7 +9,7 @@ type DeleteProps = {
     deleteProduct: (id: string) => void,
 };
 
-export default function ProductDetailsPage({deleteProduct}: DeleteProps) {
+export default function ProductDetailsPage({deleteProduct}: Readonly<DeleteProps>) {
     const [product, setProduct] = useState<ProductWithNoId>({
         name: ""
     })
