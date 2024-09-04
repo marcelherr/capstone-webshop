@@ -36,4 +36,10 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    public Product updateProduct(ProductDto updateProduct, String id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("No product found with id: " + id))
+                .withName(updateProduct.name());
+        return productRepository.save(product);
+    }
+
 }

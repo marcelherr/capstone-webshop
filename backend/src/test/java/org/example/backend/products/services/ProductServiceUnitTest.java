@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class ProductServiceUnitTest {
@@ -82,9 +81,46 @@ class ProductServiceUnitTest {
     void getProduct_Test_whenProductDoesNotExists_thenThrow() {
 
         when(productRepository.findById("1")).thenReturn(Optional.empty());
-     
+
         assertThrows(ProductNotFoundException.class, () -> productService.getProductById("1"));
         verify(productRepository).findById("1");
+    }
+
+    @Test
+    void testUpdateProduct_Success() {
+
+        String id = "1";
+        Product existingProduct = new Product(id, "TestProduct1");
+        ProductDto updatedProductDto = new ProductDto("TestProduct2");
+        Product updatedProduct = new Product("1", "TestProduct2");
+
+        when(productRepository.findById(id)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(updatedProduct)).thenReturn(updatedProduct);
+
+        Product result = productService.updateProduct(updatedProductDto, id);
+
+        assertNotNull(result);
+        assertEquals(updatedProduct, result);
+        verify(productRepository).findById(id);
+        verify(productRepository).save(updatedProduct);
+    }
+
+    @Test
+    void testUpdateProduct_ProductNotFound() {
+
+        String id = "1";
+        ProductDto updatedProductDto = new ProductDto("TestProduct");
+        Product updatedProduct = new Product("1", "TestProduct");
+
+        when(productRepository.findById(id)).thenReturn(Optional.empty());
+
+        ProductNotFoundException thrown = assertThrows(
+                ProductNotFoundException.class,
+                () -> productService.updateProduct(updatedProductDto, id)
+        );
+        assertEquals("No product found with id: " + id, thrown.getMessage());
+        verify(productRepository).findById(id);
+        verify(productRepository, never()).save(updatedProduct);
     }
 }
 

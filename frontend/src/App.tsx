@@ -2,7 +2,7 @@ import './App.css'
 import ProductGallery from "./components/productGallery/ProductGallery.tsx";
 import axios from "axios"
 import {useEffect, useState} from "react";
-import {Product} from "./types/types.tsx";
+import {Product, ProductWithNoId} from "./types/types.tsx";
 import Header from "./components/header/Header.tsx";
 import {Route, Routes} from "react-router-dom";
 import Navigation from "./components/navigation/Navigation.tsx";
@@ -29,6 +29,12 @@ export default function App() {
             .catch((error) => console.log(error.message))
     }
 
+    const updateProduct = (id: string, product: ProductWithNoId) => {
+        axios.put(`/api/products/${id}/update`, product)
+            .then((response) => response.status === 200 && fetchProducts())
+            .catch((error) => console.log(error.response.data))
+    }
+
     useEffect(() => {
         fetchProducts()
     }, []);
@@ -42,7 +48,8 @@ export default function App() {
                     <Route path={"/"} element={<ProductGallery data={data}/>}/>
                     <Route path={"/products/add"} element={<AddProductPage fetchProducts={fetchProducts}/>}/>
                     <Route path={"/products/:id"}
-                           element={<ProductDetailsPage deleteProduct={deleteProduct}/>}/>
+                           element={<ProductDetailsPage deleteProduct={deleteProduct}
+                                                        updateProduct={updateProduct}/>}/>
                 </Routes>
             </main>
         </>
