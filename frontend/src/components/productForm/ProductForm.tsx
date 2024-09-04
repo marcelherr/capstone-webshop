@@ -6,9 +6,10 @@ type ProductFormProps = {
     product: ProductWithNoId,
     setProduct: Dispatch<SetStateAction<ProductWithNoId>>,
     handleSubmit: (event: FormEvent<HTMLFormElement>) => void,
+    editable: boolean
 }
 
-export default function ProductForm({product, setProduct, handleSubmit}: Readonly<ProductFormProps>) {
+export default function ProductForm({product, setProduct, handleSubmit, editable}: Readonly<ProductFormProps>) {
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setProduct({...product, [event.target.name]: event.target.value})
@@ -24,9 +25,10 @@ export default function ProductForm({product, setProduct, handleSubmit}: Readonl
                        required={true}
                        onChange={handleChange}
                        placeholder={"Product Name:"}
+                       disabled={!editable}
                 />
             </div>
-            <button type={"submit"}>Submit</button>
+            {editable && <button type={"submit"}>Submit</button>}
         </form>
     )
 }

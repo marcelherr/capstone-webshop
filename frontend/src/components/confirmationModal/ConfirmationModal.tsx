@@ -16,9 +16,9 @@ export default function ConfirmationModal({
         <div className={"modal-backdrop"}>
             <div className={"modal"}>
                 <div className={"modal-body"}>
-                    <h2 className={"modal-body-title"}>Delete Book</h2>
+                    <h2 className={"modal-body-title"}>Delete Product</h2>
                     <h4 className={"modal-body-message"}>Are you sure you want to delete </h4>
-                    <h4>{productToBeDeleted.name}?</h4>
+                    <h4>{productToBeDeleted.name} ?</h4>
                 </div>
                 <div className={"modal-buttons"}>
                     <button className={"close-btn"} onClick={handleClose}>No, cancel</button>

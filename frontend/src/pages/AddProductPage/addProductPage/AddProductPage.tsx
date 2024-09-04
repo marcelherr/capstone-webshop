@@ -1,4 +1,4 @@
-import ProductForm from "../../../components/form/ProductForm.tsx";
+import ProductForm from "../../../components/productForm/ProductForm.tsx";
 import {FormEvent, useState} from "react";
 import axios from "axios";
 import {ProductWithNoId} from "../../../types/types.tsx";
