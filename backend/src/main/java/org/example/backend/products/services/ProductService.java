@@ -37,7 +37,7 @@ public class ProductService {
     }
 
     public Product updateProduct(ProductDto updateProduct, String id) {
-        Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("No Product found with id: " + id))
+        Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("No product found with id: " + id))
                 .withName(updateProduct.name());
         return productRepository.save(product);
     }

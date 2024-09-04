@@ -102,7 +102,7 @@ class ProductControllerIntegrationTest {
 
     @DirtiesContext
     @Test
-    void updateBook_Test_When_IdMatches() throws Exception {
+    void updateProduct_Test_When_IdMatches() throws Exception {
 
         productRepository.save(new Product("1", "TestProduct1"));
 
