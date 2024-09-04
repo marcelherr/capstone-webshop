@@ -100,4 +100,25 @@ class ProductControllerIntegrationTest {
                 .andExpect(content().json("[]"));
     }
 
+    @DirtiesContext
+    @Test
+    void updateBook_Test_When_IdMatches() throws Exception {
+
+        productRepository.save(new Product("1", "TestProduct1"));
+
+        mockMvc.perform(put("/api/products/1/update")
+                        .contentType("application/json")
+                        .content("""
+                                {
+                                   "name": "TestProduct2"
+                                }
+                                """))
+
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        { "id": "1",
+                           "name": "TestProduct2"
+                        }
+                        """));
+    }
 }
