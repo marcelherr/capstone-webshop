@@ -8,7 +8,7 @@ type ProductCardProps = {
 
 export default function ProductCard({product}: ProductCardProps) {
     return (
-        <li>
+        <li className={"product-card"}>
             <h3>{product.name}</h3>
             <Link to={`/products/${product.id}`}>Details</Link>
         </li>

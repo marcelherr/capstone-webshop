@@ -1,0 +1,13 @@
+.product-card {
+    list-style: none;
+    padding: 15px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    column-gap: 15px;
+    row-gap: 5px;
+    justify-items: start;
+    background-color: var(--med-dark);
+    border-radius: 15px;
+    flex-grow: 1;
+}

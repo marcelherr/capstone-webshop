@@ -65,16 +65,20 @@ export default function ProductDetailsPage({deleteProduct, updateProduct}: Reado
     }
 
     return (
-        <>
-            <h2>{product.name}</h2>
+        <article className={"product-details"}>
             <Link to={"/"}>Back</Link>
-            <ProductForm product={product} setProduct={setProduct} handleSubmit={handleSubmit} editable={editable}/>
-            <button onClick={onEdit}>{editable ? "Cancel Edit" : "Edit"}</button>
-            <button onClick={handleDelete}>Delete
-            </button>
-            {showDeleteModal && <ConfirmationModal handleClose={handleClose}
-                                                   handleDeleteConfirm={handleDeleteConfirm}
-                                                   productToBeDeleted={product}/>}
-        </>
+            <div className={"product-detail-container"}>
+                <h2>{product.name}</h2>
+                <ProductForm product={product} setProduct={setProduct} handleSubmit={handleSubmit} editable={editable}/>
+                <div className={"product-details-buttons"}>
+                    <button onClick={onEdit}>{editable ? "Cancel Edit" : "Edit"}</button>
+                    <button onClick={handleDelete}>Delete
+                    </button>
+                </div>
+                {showDeleteModal && <ConfirmationModal handleClose={handleClose}
+                                                       handleDeleteConfirm={handleDeleteConfirm}
+                                                       productToBeDeleted={product}/>}
+            </div>
+        </article>
     )
 }

@@ -18,17 +18,18 @@ export default function ProductForm({product, setProduct, handleSubmit, editable
     return (
         <form onSubmit={handleSubmit} className={"product-form"}>
             <div className={"product-info"}>
-                <label htmlFor={"name"}></label>
-                <input type={"text"}
-                       name={"name"}
-                       value={product.name}
-                       required={true}
-                       onChange={handleChange}
-                       placeholder={"Product Name:"}
-                       disabled={!editable}
-                />
+                <label htmlFor={"name"}>
+                    <input type={"text"}
+                           name={"name"}
+                           value={product.name}
+                           required={true}
+                           onChange={handleChange}
+                           placeholder={"Product Name:"}
+                           disabled={!editable}
+                    /></label>
             </div>
             {editable && <button type={"submit"}>Submit</button>}
         </form>
+
     )
 }

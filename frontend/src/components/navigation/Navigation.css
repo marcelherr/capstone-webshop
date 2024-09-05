@@ -11,3 +11,47 @@ nav ul {
     gap: 20px;
     padding: 0;
 }
+
+nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--med-dark);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 2;
+}
+
+nav li {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+nav a {
+    color: var(--light);
+    font-size: smaller;
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    gap: 2px;
+}
+
+nav a:hover {
+    color: #183A37;
+}
+
+@media only screen and (min-width: 768px) {
+    nav {
+        position: sticky;
+        top: 0;
+    }
+
+    nav a {
+        flex-direction: row;
+        gap: 5px;
+    }
+}
