@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public record Product(
         String id,
-        String name
+        String name,
+        double price,
+        String description
 ) {
 }
