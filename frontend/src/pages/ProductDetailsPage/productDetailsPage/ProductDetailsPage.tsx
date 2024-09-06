@@ -13,7 +13,9 @@ type DeleteProps = {
 
 export default function ProductDetailsPage({deleteProduct, updateProduct}: Readonly<DeleteProps>) {
     const [product, setProduct] = useState<ProductWithNoId>({
-        name: ""
+        name: "",
+        price: 0,
+        description: ""
     })
 
     const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
@@ -68,7 +70,6 @@ export default function ProductDetailsPage({deleteProduct, updateProduct}: Reado
         <article className={"product-details"}>
             <Link to={"/"}>Back</Link>
             <div className={"product-detail-container"}>
-                <h2>{product.name}</h2>
                 <ProductForm product={product} setProduct={setProduct} handleSubmit={handleSubmit} editable={editable}/>
                 <div className={"product-details-buttons"}>
                     <button onClick={onEdit}>{editable ? "Cancel Edit" : "Edit"}</button>

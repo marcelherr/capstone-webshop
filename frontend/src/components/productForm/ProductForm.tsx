@@ -11,21 +11,43 @@ type ProductFormProps = {
 
 export default function ProductForm({product, setProduct, handleSubmit, editable}: Readonly<ProductFormProps>) {
 
-    function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    function handleChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setProduct({...product, [event.target.name]: event.target.value})
     }
 
     return (
         <form onSubmit={handleSubmit} className={"product-form"}>
             <div className={"product-info"}>
-                <label htmlFor={"name"}>
-                    <input type={"text"}
-                           name={"name"}
-                           value={product.name}
-                           required={true}
-                           onChange={handleChange}
-                           placeholder={"Product Name:"}
-                           disabled={!editable}
+                <label htmlFor={"name"}></label>
+                <input type={"text"}
+                       name={"name"}
+                       value={product.name}
+                       required={true}
+                       onChange={handleChange}
+                       placeholder={"Product Name:"}
+                       disabled={!editable}
+                />
+            </div>
+            <div className={"product-info"}>
+                <label htmlFor={"price"}>Price: </label>
+                <input type={"text"}
+                       name={"price"}
+                       value={product.price}
+                       required={true}
+                       onChange={handleChange}
+                       placeholder={"Product Price:"}
+                       disabled={!editable}
+                />
+            </div>
+            <div className={"product-info"}>
+                <label htmlFor={"description"}>Description:
+                    <textarea rows={5} cols={30}
+                              name={"description"}
+                              value={product.description}
+                              required={true}
+                              onChange={handleChange}
+                              placeholder={"Product Description:"}
+                              disabled={!editable}
                     /></label>
             </div>
             {editable && <button type={"submit"}>Submit</button>}

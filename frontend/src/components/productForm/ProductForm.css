@@ -2,6 +2,7 @@
     background-color: transparent;
     border: none;
     font-size: 18px;
+    color: var(--dark);
 }
 
 .product-form {
