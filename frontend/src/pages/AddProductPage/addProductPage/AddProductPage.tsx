@@ -28,7 +28,7 @@ export default function AddProductPage({fetchProducts}: FetchProps) {
     return (
         <>
             <h2>Add a Product</h2>
-            <ProductForm handleSubmit={handleSubmit} product={product} setProduct={setProduct}/>
+            <ProductForm handleSubmit={handleSubmit} product={product} setProduct={setProduct} editable={true}/>
         </>
     )
 }

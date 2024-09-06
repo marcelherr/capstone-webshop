@@ -11,7 +11,7 @@
     max-width: 350px;
     height: 380px;
     margin: 150px auto;
-    background-color: #ffff;
+    background-color: var(--med-dark);
     border-radius: 10px;
     padding: 0;
 }
@@ -41,9 +41,9 @@
 }
 
 .close-btn {
-    background-color: #f9f9f9;
-    color: #888888;
-    border-color: #888888;
+    background-color: var(--button);
+    color: var(--dark);
+    border-color: var(--dark);
     width: 110px;
     font-size: 13px;
 }
@@ -57,4 +57,5 @@
 .delete-btn {
     width: 110px;
     font-size: 13px;
+    background-color: var(--danger);
 }

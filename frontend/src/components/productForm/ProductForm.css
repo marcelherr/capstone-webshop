@@ -1,0 +1,15 @@
+.product-form input:disabled {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-form button {
+    margin-top: 10px;
+}
