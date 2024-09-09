@@ -1,0 +1,33 @@
+.searchBar-container {
+    display: flex;
+    gap: 5px;
+    align-self: center;
+}
+
+.search-input {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(4, 21, 31, 0.45);
+    margin-bottom: 10px;
+    border: 1px solid var(--med-dark);
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.search-lense {
+    color: var(--button);
+    font-size: 40px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
