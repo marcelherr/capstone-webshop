@@ -4,6 +4,8 @@ import lombok.With;
 
 @With
 public record ProductDto(
-        String name
+        String name,
+        double price,
+        String description
 ) {
 }

@@ -23,13 +23,13 @@ class ProductServiceUnitTest {
     void getAllProducts_Test() {
 
         List<Product> allProducts = List.of(
-                new Product("1", "Product 1"),
-                new Product("2", "Product 2")
+                new Product("1", "Product 1", 1.0, "description1"),
+                new Product("2", "Product 2", 1.5, "description2")
         );
 
         List<Product> expectedProducts = List.of(
-                new Product("1", "Product 1"),
-                new Product("2", "Product 2")
+                new Product("1", "Product 1", 1.0, "description1"),
+                new Product("2", "Product 2", 1.5, "description2")
         );
 
         when(productRepository.findAll()).thenReturn(allProducts);
@@ -50,14 +50,14 @@ class ProductServiceUnitTest {
     @Test
     void addProductTest_whenNewProductAsInput_thenReturnNewProduct() {
 
-        ProductDto productDto = new ProductDto("TestProduct1");
-        Product productToSave = new Product("1", productDto.name());
+        ProductDto productDto = new ProductDto("TestProduct1", 1.0, "description1");
+        Product productToSave = new Product("1", productDto.name(), productDto.price(), productDto.description());
         when(productRepository.save(productToSave)).thenReturn(productToSave);
         when(idService.randomId()).thenReturn(productToSave.id());
 
         Product actual = productService.saveProduct(productDto);
 
-        Product expected = new Product("1", productDto.name());
+        Product expected = new Product("1", productDto.name(), productDto.price(), productDto.description());
         verify(productRepository).save(productToSave);
         verify(idService).randomId();
 
@@ -67,12 +67,12 @@ class ProductServiceUnitTest {
     @Test
     void getProduct_Test_whenProductExists_thenReturnProduct() {
 
-        Product product = new Product("1", "TestProduct1");
+        Product product = new Product("1", "TestProduct1", 1.0, "description1");
         when(productRepository.findById("1")).thenReturn(Optional.of(product));
 
         Product actual = productService.getProductById("1");
 
-        Product expected = new Product("1", "TestProduct1");
+        Product expected = new Product("1", "TestProduct1", 1.0, "description1");
         verify(productRepository).findById("1");
         assertEquals(expected, actual);
     }
@@ -90,9 +90,9 @@ class ProductServiceUnitTest {
     void testUpdateProduct_Success() {
 
         String id = "1";
-        Product existingProduct = new Product(id, "TestProduct1");
-        ProductDto updatedProductDto = new ProductDto("TestProduct2");
-        Product updatedProduct = new Product("1", "TestProduct2");
+        Product existingProduct = new Product(id, "TestProduct1", 1.0, "description1");
+        ProductDto updatedProductDto = new ProductDto("TestProduct2", 2.0, "description2");
+        Product updatedProduct = new Product("1", "TestProduct2", 2.0, "description2");
 
         when(productRepository.findById(id)).thenReturn(Optional.of(existingProduct));
         when(productRepository.save(updatedProduct)).thenReturn(updatedProduct);
@@ -109,8 +109,8 @@ class ProductServiceUnitTest {
     void testUpdateProduct_ProductNotFound() {
 
         String id = "1";
-        ProductDto updatedProductDto = new ProductDto("TestProduct");
-        Product updatedProduct = new Product("1", "TestProduct");
+        ProductDto updatedProductDto = new ProductDto("TestProduct", 1.0, "description1");
+        Product updatedProduct = new Product("1", "TestProduct", 1.0, "description1");
 
         when(productRepository.findById(id)).thenReturn(Optional.empty());
 

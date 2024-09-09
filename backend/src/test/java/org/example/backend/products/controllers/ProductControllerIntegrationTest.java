@@ -47,16 +47,14 @@ class ProductControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.name").value("TestProduct1"));
-
     }
-
 
     @DirtiesContext
     @Test
     @WithMockUser
     void getProductById_Test_whenIdExists() throws Exception {
         //GIVEN
-        productRepository.save(new Product("1", "TestProduct1"));
+        productRepository.save(new Product("1", "TestProduct1", 1.0, "description1"));
         //WHEN
         mockMvc.perform(get("/api/products/1"))
                 //THEN
@@ -64,7 +62,9 @@ class ProductControllerIntegrationTest {
                 .andExpect(content().json("""
                         {
                              "id": "1",
-                             "name": "TestProduct1" 
+                             "name": "TestProduct1" ,
+                             "price": 1.0,
+                             "description": "description1" 
                         }
                         """));
     }
@@ -90,7 +90,7 @@ class ProductControllerIntegrationTest {
     @WithMockUser
     void deleteProduct() throws Exception {
 
-        productRepository.save(new Product("1", "TestProduct1"));
+        productRepository.save(new Product("1", "TestProduct1", 1.0, "description1"));
 
         mockMvc.perform(delete("/api/products/1"))
                 .andExpect(status().isOk());
@@ -104,20 +104,24 @@ class ProductControllerIntegrationTest {
     @Test
     void updateProduct_Test_When_IdMatches() throws Exception {
 
-        productRepository.save(new Product("1", "TestProduct1"));
+        productRepository.save(new Product("1", "TestProduct1", 1.0, "description1"));
 
         mockMvc.perform(put("/api/products/1/update")
                         .contentType("application/json")
                         .content("""
                                 {
-                                   "name": "TestProduct2"
+                                   "name": "TestProduct2",
+                                   "price": 2.0,
+                                   "description": "description2"
                                 }
                                 """))
 
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         { "id": "1",
-                           "name": "TestProduct2"
+                           "name": "TestProduct2",
+                           "price": 2.0,
+                           "description": "description2"
                         }
                         """));
     }
