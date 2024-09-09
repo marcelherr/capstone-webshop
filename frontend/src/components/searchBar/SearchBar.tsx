@@ -1,6 +1,11 @@
 import './SearchBar.css'
+import {Dispatch, SetStateAction} from "react";
 
-export default function SearchBar({setSearchInput}: any) {
+type SearchBarProps = {
+    setSearchInput: Dispatch<SetStateAction<string>>;
+};
+
+export default function SearchBar({setSearchInput}: SearchBarProps) {
     return (
 
         <div className={"searchBar-container"}>
