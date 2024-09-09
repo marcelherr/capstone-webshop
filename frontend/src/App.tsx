@@ -39,13 +39,19 @@ export default function App() {
         fetchProducts()
     }, []);
 
+    const [searchInput, setSearchInput] = useState("")
+
+    const filteredProducts: Product[] = data
+        .filter((data) => data.name?.toLowerCase().includes(searchInput.toLowerCase()));
+
     return (
         <>
             <Header/>
             <Navigation/>
             <main>
                 <Routes>
-                    <Route path={"/"} element={<ProductGallery data={data}/>}/>
+                    <Route path={"/"}
+                           element={<ProductGallery data={filteredProducts} setSearchInput={setSearchInput}/>}/>
                     <Route path={"/products/add"} element={<AddProductPage fetchProducts={fetchProducts}/>}/>
                     <Route path={"/products/:id"}
                            element={<ProductDetailsPage deleteProduct={deleteProduct}
