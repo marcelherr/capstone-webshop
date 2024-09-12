@@ -40,9 +40,28 @@ export default function App() {
     }, []);
 
     const [searchInput, setSearchInput] = useState("")
+    const [isNameAscending, setIsNameAscending] = useState<boolean | null>(null);
+    const [isPriceAscending, setIsPriceAscending] = useState<boolean | null>(null);
 
-    const filteredProducts: Product[] = data
-        .filter((data) => data.name?.toLowerCase().includes(searchInput.toLowerCase()));
+    const filteredAndSortedProducts: Product[] = [...data]
+        .filter((product) => product.name?.toLowerCase().includes(searchInput.toLowerCase()))
+        .sort((a, b) => {
+            if (isNameAscending !== null) {
+                return isNameAscending ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+            } else {
+                return isPriceAscending ? a.price - b.price : b.price - a.price;
+            }
+        });
+
+    function toggleSortOrder() {
+        setIsNameAscending(!isNameAscending);
+        setIsPriceAscending(null);
+    }
+
+    function toggleSortPrice() {
+        setIsPriceAscending(!isPriceAscending);
+        setIsNameAscending(null);
+    }
 
     return (
         <>
@@ -51,7 +70,12 @@ export default function App() {
             <main>
                 <Routes>
                     <Route path={"/"}
-                           element={<ProductGallery data={filteredProducts} setSearchInput={setSearchInput}/>}/>
+                           element={<ProductGallery data={filteredAndSortedProducts}
+                                                    setSearchInput={setSearchInput}
+                                                    toggleSortOrder={toggleSortOrder}
+                                                    toggleSortPrice={toggleSortPrice}
+                                                    setIsPriceAscending={setIsPriceAscending}
+                                                    setIsNameAscending={setIsNameAscending}/>}/>
                     <Route path={"/products/add"} element={<AddProductPage fetchProducts={fetchProducts}/>}/>
                     <Route path={"/products/:id"}
                            element={<ProductDetailsPage deleteProduct={deleteProduct}
