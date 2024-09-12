@@ -39,7 +39,7 @@ export default function SortOption({
 
     return (
         <div>
-            <button onClick={handleSortButton}> {showSortButton ? "AZ↓" : "ZA↑"}</button>
+            <button onClick={handleSortButton}> AZ {showSortButton ? "↓" : "↑"}</button>
             <button onClick={handlePriceButton}> Price {showPriceButton ? "↓" : "↑"}</button>
             <button onClick={onReset}>Reset</button>
         </div>
