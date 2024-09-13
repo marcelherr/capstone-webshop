@@ -1,10 +1,11 @@
-package org.example.backend.products.services;
+package org.example.backend.services;
 
-import org.example.backend.products.dto.ProductDto;
-import org.example.backend.products.models.Product;
-import org.example.backend.products.models.ProductNotFoundException;
-import org.example.backend.products.repositories.ProductRepository;
+import org.example.backend.dto.ProductDto;
+import org.example.backend.models.Product;
+import org.example.backend.models.ProductNotFoundException;
+import org.example.backend.repositories.ProductRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import static org.mockito.Mockito.*;
 class ProductServiceUnitTest {
 
     private final ProductRepository productRepository = mock(ProductRepository.class);
-    private final IdService idService = mock(IdService.class);
+    private final IdService idService = Mockito.mock(IdService.class);
     private final ProductService productService = new ProductService(productRepository, idService);
 
     @Test

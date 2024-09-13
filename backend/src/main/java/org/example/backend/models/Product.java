@@ -1,4 +1,4 @@
-package org.example.backend.products.models;
+package org.example.backend.models;
 
 import lombok.With;
 import org.springframework.data.mongodb.core.mapping.Document;

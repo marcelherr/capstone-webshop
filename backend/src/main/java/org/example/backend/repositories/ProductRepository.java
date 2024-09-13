@@ -1,6 +1,6 @@
-package org.example.backend.products.repositories;
+package org.example.backend.repositories;
 
-import org.example.backend.products.models.Product;
+import org.example.backend.models.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

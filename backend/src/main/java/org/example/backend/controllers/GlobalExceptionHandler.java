@@ -1,7 +1,7 @@
-package org.example.backend.products.controllers;
+package org.example.backend.controllers;
 
-import org.example.backend.products.models.ErrorMessage;
-import org.example.backend.products.models.ProductNotFoundException;
+import org.example.backend.models.ErrorMessage;
+import org.example.backend.models.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

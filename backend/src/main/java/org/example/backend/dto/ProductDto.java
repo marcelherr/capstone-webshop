@@ -1,4 +1,4 @@
-package org.example.backend.products.dto;
+package org.example.backend.dto;
 
 import lombok.With;
 

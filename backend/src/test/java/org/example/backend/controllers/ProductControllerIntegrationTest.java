@@ -1,7 +1,7 @@
-package org.example.backend.products.controllers;
+package org.example.backend.controllers;
 
-import org.example.backend.products.models.Product;
-import org.example.backend.products.repositories.ProductRepository;
+import org.example.backend.models.Product;
+import org.example.backend.repositories.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

@@ -1,10 +1,10 @@
-package org.example.backend.products.services;
+package org.example.backend.services;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.products.dto.ProductDto;
-import org.example.backend.products.models.Product;
-import org.example.backend.products.models.ProductNotFoundException;
-import org.example.backend.products.repositories.ProductRepository;
+import org.example.backend.dto.ProductDto;
+import org.example.backend.models.Product;
+import org.example.backend.models.ProductNotFoundException;
+import org.example.backend.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

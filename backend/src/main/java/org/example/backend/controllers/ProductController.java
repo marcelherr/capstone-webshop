@@ -1,18 +1,16 @@
-package org.example.backend.products.controllers;
+package org.example.backend.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.products.dto.ProductDto;
-import org.example.backend.products.models.Product;
-import org.example.backend.products.services.ProductService;
+import org.example.backend.dto.ProductDto;
+import org.example.backend.models.Product;
+import org.example.backend.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/products")
-
 public class ProductController {
 
     private final ProductService productService;
