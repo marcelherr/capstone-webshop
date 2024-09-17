@@ -53,11 +53,11 @@ class ProductControllerIntegrationTest {
     @Test
     @WithMockUser
     void getProductById_Test_whenIdExists() throws Exception {
-        //GIVEN
+
         productRepository.save(new Product("1", "TestProduct1", 1.0, "description1"));
-        //WHEN
+
         mockMvc.perform(get("/api/products/1"))
-                //THEN
+
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         {

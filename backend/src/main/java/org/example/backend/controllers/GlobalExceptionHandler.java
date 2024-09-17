@@ -1,6 +1,7 @@
 package org.example.backend.controllers;
 
 import org.example.backend.models.ErrorMessage;
+import org.example.backend.models.OrderNotFoundException;
 import org.example.backend.models.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,5 +17,12 @@ public class GlobalExceptionHandler {
         ErrorMessage errorMessage = new ErrorMessage(error.getMessage(), 404);
         return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<ErrorMessage> handleOrderNotFoundException(OrderNotFoundException error) {
+        ErrorMessage errorMessage = new ErrorMessage(error.getMessage(), 404);
+        return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
+    }
+
 
 }
