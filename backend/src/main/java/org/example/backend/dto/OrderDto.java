@@ -9,6 +9,7 @@ import java.util.List;
 @With
 public record OrderDto(
         LocalDateTime orderDateTime,
-        List<ProductDto> products
+        List<ProductDto> products,
+        double totalPrice
 ) {
 }

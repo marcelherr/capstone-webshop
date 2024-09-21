@@ -68,7 +68,7 @@ class OrderControllerIntegrationTest {
     void getOrderById_Test_whenIdExists() throws Exception {
 
         Product product = new Product("1", "TestProduct1", 10.0, "Test description 1");
-        Order order = new Order("1", LocalDateTime.of(2024, 9, 12, 10, 30), List.of(product));
+        Order order = new Order("1", LocalDateTime.of(2024, 9, 12, 10, 30), List.of(product), 90);
         orderRepository.save(order);
 
         mockMvc.perform(get("/api/orders/1"))
@@ -111,7 +111,7 @@ class OrderControllerIntegrationTest {
     void deleteOrder_Test() throws Exception {
 
         Product product = new Product("1", "TestProduct1", 10.0, "Test description 1");
-        Order order = new Order("1", LocalDateTime.of(2024, 9, 12, 10, 30), List.of(product));
+        Order order = new Order("1", LocalDateTime.of(2024, 9, 12, 10, 30), List.of(product), 90);
         orderRepository.save(order);
 
         mockMvc.perform(delete("/api/orders/1"))

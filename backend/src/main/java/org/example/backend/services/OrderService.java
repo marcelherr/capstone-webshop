@@ -2,6 +2,7 @@ package org.example.backend.services;
 
 import lombok.RequiredArgsConstructor;
 import org.example.backend.dto.OrderDto;
+import org.example.backend.dto.ProductDto;
 import org.example.backend.models.Order;
 import org.example.backend.models.OrderNotFoundException;
 import org.example.backend.models.Product;
@@ -25,6 +26,10 @@ public class OrderService {
 
     public Order saveOrder(OrderDto orderDto) {
 
+        double totalPrice = orderDto.products().stream()
+                .mapToDouble(ProductDto::price)
+                .sum();
+
         List<Product> products = orderDto.products().stream()
                 .map(productDto -> new Product(
                         idService.randomId(),
@@ -37,10 +42,13 @@ public class OrderService {
         Order orderToSave = new Order(
                 idService.randomId(),
                 orderDto.orderDateTime(),
-                products
+                products,
+                totalPrice
         );
+
         return orderRepository.save(orderToSave);
     }
+
 
     public Order getOrderById(String id) {
         return orderRepository.findById(id)

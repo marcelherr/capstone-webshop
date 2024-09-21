@@ -11,5 +11,6 @@ import java.util.List;
 public record Order(
         String id,
         LocalDateTime orderDateTime,
-        List<Product> products) {
+        List<Product> products,
+        double totalPrice) {
 }
