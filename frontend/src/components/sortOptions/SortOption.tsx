@@ -1,7 +1,6 @@
 import './SortOptions.css'
 import {Dispatch, SetStateAction, useState} from "react";
 
-
 type SortOptionProps = {
     toggleSortOrder: () => void;
     toggleSortPrice: () => void;
@@ -18,7 +17,6 @@ export default function SortOption({
 
     const [showSortButton, setShowSortButton] = useState<boolean | null>(null)
     const [showPriceButton, setShowPriceButton] = useState<boolean | null>(null)
-
 
     function handleSortButton() {
         setShowSortButton(!showSortButton)
@@ -39,8 +37,8 @@ export default function SortOption({
 
     return (
         <div>
-            <button onClick={handleSortButton}> {showSortButton ? "AZ↓" : "ZA↑"}</button>
-            <button onClick={handlePriceButton}> Price {showPriceButton ? "↓" : "↑"}</button>
+            <button onClick={handleSortButton}> AZ {showSortButton ? "↓" : "↑"}</button>
+            <button onClick={handlePriceButton}> Price {showPriceButton ? "↑" : "↓"}</button>
             <button onClick={onReset}>Reset</button>
         </div>
     )

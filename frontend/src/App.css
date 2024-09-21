@@ -12,18 +12,36 @@ main {
     max-width: 1200px;
     min-width: 100%;
     display: flex;
-    justify-content: center;
-    align-content: center;
-    place-items: center;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
     margin: 20px 20px 90px;
+    padding: 20px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+}
+
+.product-gallery {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.shopping-cart {
+    width: 300px;
+    max-height: 50vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    margin-top: 120px;
 }
 
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 24
+    'opsz' 24;
 }
 
 .align-right {
@@ -39,7 +57,7 @@ main {
 }
 
 h1 {
-    color: var(--font-light);
+    color: var(--light);
     font-size: 40px;
     padding: 0;
     font-family: "Permanent Marker", sans-serif;
@@ -47,7 +65,7 @@ h1 {
 }
 
 h2 {
-    color: var(--font-light);
+    color: var(--light);
     font-size: 30px;
     padding: 0;
     font-family: "Urbanist", sans-serif;

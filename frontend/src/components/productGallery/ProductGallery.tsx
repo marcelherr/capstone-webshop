@@ -12,6 +12,7 @@ type ProductGalleryProps = {
     toggleSortPrice: () => void;
     setIsNameAscending: Dispatch<SetStateAction<boolean | null>>;
     setIsPriceAscending: Dispatch<SetStateAction<boolean | null>>;
+    addToCart: (product: Product) => void;
 }
 
 export default function ProductGallery({
@@ -20,7 +21,8 @@ export default function ProductGallery({
                                            toggleSortOrder,
                                            toggleSortPrice,
                                            setIsNameAscending,
-                                           setIsPriceAscending
+                                           setIsPriceAscending,
+                                           addToCart
                                        }: ProductGalleryProps) {
     return (
         <>
@@ -35,7 +37,7 @@ export default function ProductGallery({
             ) : (
                 <ul className="product-list">
                     {data.map((product) => (
-                        <ProductCard key={product.id} product={product}/>
+                        <ProductCard key={product.id} product={product} addToCart={addToCart}/>
                     ))}
                 </ul>
             )}

@@ -11,3 +11,16 @@ export type ProductWithNoId = {
     description: string
 
 }
+
+export type Order = {
+    id: string,
+    orderDateTime: Date;
+    products: Product[];
+    totalPrice: number;
+};
+
+export type OrderWithNoId = {
+    orderDateTime: Date;
+    products: Product[];
+    totalPrice: number;
+}

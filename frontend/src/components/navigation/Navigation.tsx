@@ -11,6 +11,9 @@ export default function Navigation() {
                 <li>
                     <Link to={"/products/add"}>Add Product</Link>
                 </li>
+                <li>
+                    <Link to={"orders"}>Orders</Link>
+                </li>
             </ul>
         </nav>
     )
