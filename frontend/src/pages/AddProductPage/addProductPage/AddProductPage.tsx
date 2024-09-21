@@ -11,7 +11,9 @@ type FetchProps = {
 export default function AddProductPage({fetchProducts}: FetchProps) {
 
     const [product, setProduct] = useState<ProductWithNoId>({
-        name: ""
+        name: "",
+        price: 0,
+        description: ""
     })
 
     const navigate = useNavigate();

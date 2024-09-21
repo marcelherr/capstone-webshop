@@ -2,16 +2,17 @@ import './ProductDetailsPage.css'
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {FormEvent, useEffect, useState} from "react";
 import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal.tsx";
-import {ProductWithNoId} from "../../../types/types.tsx";
+import {Product, ProductWithNoId} from "../../../types/types.tsx";
 import axios from "axios";
 import ProductForm from "../../../components/productForm/ProductForm.tsx";
 
 type DeleteProps = {
     deleteProduct: (id: string) => void,
     updateProduct: (id: string, product: ProductWithNoId) => void,
+    addToCart: (product: Product) => void;
 };
 
-export default function ProductDetailsPage({deleteProduct, updateProduct}: Readonly<DeleteProps>) {
+export default function ProductDetailsPage({deleteProduct, updateProduct, addToCart}: Readonly<DeleteProps>) {
     const [product, setProduct] = useState<ProductWithNoId>({
         name: "",
         price: 0,
@@ -66,6 +67,18 @@ export default function ProductDetailsPage({deleteProduct, updateProduct}: Reado
         }
     }
 
+    function handleAddToCart() {
+        if (id) {
+            const productToAdd: Product = {
+                ...product,
+                id: id
+            };
+            addToCart(productToAdd);
+        }
+        navigate("/")
+    }
+
+
     return (
         <article className={"product-details"}>
             <Link to={"/"}>Back</Link>
@@ -75,6 +88,7 @@ export default function ProductDetailsPage({deleteProduct, updateProduct}: Reado
                     <button onClick={onEdit}>{editable ? "Cancel Edit" : "Edit"}</button>
                     <button onClick={handleDelete}>Delete
                     </button>
+                    <button onClick={handleAddToCart}>Add to Cart</button>
                 </div>
                 {showDeleteModal && <ConfirmationModal handleClose={handleClose}
                                                        handleDeleteConfirm={handleDeleteConfirm}
