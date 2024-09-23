@@ -86,7 +86,7 @@ export default function ProductDetailsPage({deleteProduct, updateProduct, addToC
                 <ProductForm product={product} setProduct={setProduct} handleSubmit={handleSubmit} editable={editable}/>
                 <div className={"product-details-buttons"}>
                     <button onClick={onEdit}>{editable ? "Cancel Edit" : "Edit"}</button>
-                    <button onClick={handleDelete}>Delete
+                    <button className={"delete-button"} onClick={handleDelete}>Delete
                     </button>
                     <button onClick={handleAddToCart}>Add to Cart</button>
                 </div>

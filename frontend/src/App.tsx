@@ -124,7 +124,6 @@ export default function App() {
                     <Route path={"/orders/:id"} element={<OrderDetailsPage deleteOrder={deleteOrder}/>}></Route>
                 </Routes>
             </main>
-
         </>
     )
 };

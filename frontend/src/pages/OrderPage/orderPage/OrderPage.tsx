@@ -9,19 +9,17 @@ type OrderPageProps = {
 
 export default function OrderPage({orders}: OrderPageProps) {
     return (
-        <>
+        <div className="order-page">
             <h2>All Orders</h2>
             {(!orders || orders.length === 0) ? (
-                    <p>No Orders</p>)
-                :
-                (
-                    <ul className="order-list">
-                        {orders.map((order) => (
-                            <OrderCard key={order.id} order={order}/>
-                        ))}
-
-                    </ul>
-                )}
-        </>
+                <p>No Orders</p>
+            ) : (
+                <ul className="order-list">
+                    {orders.map((order) => (
+                        <OrderCard key={order.id} order={order}/>
+                    ))}
+                </ul>
+            )}
+        </div>
     )
 }

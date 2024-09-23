@@ -18,7 +18,7 @@ export default function ProductForm({product, setProduct, handleSubmit, editable
     return (
         <form onSubmit={handleSubmit} className={"product-form"}>
             <div className={"product-info"}>
-                <label htmlFor={"name"}></label>
+                <label htmlFor={"name"}>Product Name: </label>
                 <input type={"text"}
                        name={"name"}
                        value={product.name}
