@@ -1,0 +1,25 @@
+.sort-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.sort-options button {
+    background-color: #5D737E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sort-options button:hover {
+    background-color: #4a6065;
+}
+
+.sort-options button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

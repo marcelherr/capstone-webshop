@@ -57,7 +57,7 @@ main {
 }
 
 h1 {
-    color: var(--light);
+    color: #333;
     font-size: 40px;
     padding: 0;
     font-family: "Permanent Marker", sans-serif;
@@ -65,7 +65,7 @@ h1 {
 }
 
 h2 {
-    color: var(--light);
+    color: #333;
     font-size: 30px;
     padding: 0;
     font-family: "Urbanist", sans-serif;

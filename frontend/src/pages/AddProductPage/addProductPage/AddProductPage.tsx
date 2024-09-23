@@ -3,6 +3,7 @@ import {FormEvent, useState} from "react";
 import axios from "axios";
 import {ProductWithNoId} from "../../../types/types.tsx";
 import {useNavigate} from "react-router-dom";
+import './AddProductPage.css'
 
 type FetchProps = {
     fetchProducts: () => void
@@ -28,9 +29,9 @@ export default function AddProductPage({fetchProducts}: FetchProps) {
     }
 
     return (
-        <>
+        <div className="add-product-container">
             <h2>Add a Product</h2>
             <ProductForm handleSubmit={handleSubmit} product={product} setProduct={setProduct} editable={true}/>
-        </>
+        </div>
     )
 }

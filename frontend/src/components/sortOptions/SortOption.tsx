@@ -36,10 +36,11 @@ export default function SortOption({
     }
 
     return (
-        <div>
+        <div className="sort-options">
             <button onClick={handleSortButton}> AZ {showSortButton ? "↓" : "↑"}</button>
             <button onClick={handlePriceButton}> Price {showPriceButton ? "↑" : "↓"}</button>
             <button onClick={onReset}>Reset</button>
         </div>
+
     )
 }

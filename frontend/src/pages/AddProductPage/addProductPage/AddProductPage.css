@@ -1,0 +1,19 @@
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.add-product-container form {
+    width: 100%;
+    max-width: 500px;
+}

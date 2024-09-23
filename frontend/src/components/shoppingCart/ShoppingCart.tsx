@@ -39,7 +39,7 @@ export default function ShoppingCart({cartItems, removeFromCart, setCartItems, f
 
 
     return (
-        <div className="shopping-cart">
+        <div>
             <h3>Shopping Cart</h3>
             {cartItems.length === 0 ? (
                 <p>No items in cart</p>
@@ -54,7 +54,7 @@ export default function ShoppingCart({cartItems, removeFromCart, setCartItems, f
                 </ul>
             )
             }
-            <p>Total Price: {calculateTotalPrice().toFixed(2)} €</p>
+            <p className="total-price">Total Price: {calculateTotalPrice().toFixed(2)} €</p>
             <button onClick={handleCheckout}>Checkout</button>
         </div>
     );

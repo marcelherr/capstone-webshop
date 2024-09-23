@@ -2,7 +2,7 @@ import ProductGallery from "../../../components/productGallery/ProductGallery.ts
 import ShoppingCart from "../../../components/shoppingCart/ShoppingCart.tsx";
 import {Product} from "../../../types/types.tsx";
 import {Dispatch, SetStateAction} from "react";
-import './MainPage.css';  // Make sure to import the CSS
+import './MainPage.css';
 
 type MainPageProps = {
     data: Product[];
@@ -44,8 +44,10 @@ export default function MainPage({
                     addToCart={addToCart}
                 />
             </div>
-            <ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} setCartItems={setCartItems}
-                          fetchOrders={fetchOrders}/>
+            <div className={"shopping-cart"}>
+                <ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} setCartItems={setCartItems}
+                              fetchOrders={fetchOrders}/>
+            </div>
         </div>
     );
 }

@@ -1,3 +1,26 @@
 .cart-item-card {
     background-color: #5D737E;
+    color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item-card p {
+    margin: 5px 0;
+}
+
+.cart-item-card button {
+    background-color: #DF2935;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart-item-card button:hover {
+    background-color: #c62828;
 }

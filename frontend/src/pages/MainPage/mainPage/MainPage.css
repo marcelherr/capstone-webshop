@@ -1,24 +1,31 @@
-/* MainPage.css */
+
 .main-container {
     display: flex;
     justify-content: space-between;
-    padding-right: 320px;
+    padding-right: 0;
+    padding-top: 20px;
+    width: 100%;
 }
 
 .product-gallery {
-    flex: 1;
-    padding: 20px;
+    flex: 3;
 }
 
 .shopping-cart {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100vh;
-    background-color: olive;
+    flex: 1;
+    top: 60px;
+    position: sticky;
+    right: 20px;
+    width: 25%;
+    max-height: 80vh;
+    background-color: #a9a9a9;
     padding: 20px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     overflow-y: auto;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
+
+
