@@ -26,7 +26,6 @@ export default function ProductGallery({
                                        }: ProductGalleryProps) {
     return (
         <>
-            <h2>All Products</h2>
             <SearchBar setSearchInput={setSearchInput}/>
             <SortOption toggleSortOrder={toggleSortOrder}
                         toggleSortPrice={toggleSortPrice}

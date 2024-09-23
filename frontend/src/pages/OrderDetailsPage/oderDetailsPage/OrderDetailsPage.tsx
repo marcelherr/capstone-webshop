@@ -57,26 +57,29 @@ export default function OrderDetailsPage({deleteOrder}: Readonly<DeleteOrderProp
     }
 
     return (
-        <>
-            <Link to={"/orders"}>Back</Link>
+        <div className="order-details">
+            <Link to={"/orders"} className="back-link">Back</Link>
             <h2>{order.id}</h2>
             <p>Order Date: {order.orderDateTime.toLocaleString()}</p>
-            <p>{order.totalPrice}</p>
+            <p>Total Price: € {order.totalPrice.toFixed(2)}</p>
             <ul>
                 {order.products.map((product) => (
                     <li key={product.id}>
-                        <strong>{product.name}</strong>: € {product.price.toFixed(2)} - {product.description}
+                        <strong>{product.name}</strong>: € {product.price.toFixed(2)}
                     </li>
                 ))}
             </ul>
-            {/*<p>{order.orderDateTime}</p>*/}
-            <div className={"order-details-buttons"}>
-                <button onClick={handleDelete}>Delete
-                </button>
+            <div className="order-details-buttons">
+                <button className="delete-button" onClick={handleDelete}>Delete</button>
             </div>
-            {showDeleteModal && <ConfirmationModalOrder handleClose={handleClose}
-                                                        handleDeleteConfirm={handleDeleteConfirm}
-                                                        orderToBeDeleted={order}/>}
-        </>
-    )
+            {showDeleteModal && (
+                <ConfirmationModalOrder
+                    handleClose={handleClose}
+                    handleDeleteConfirm={handleDeleteConfirm}
+                    orderToBeDeleted={order}
+                />
+            )}
+        </div>
+    );
+
 }

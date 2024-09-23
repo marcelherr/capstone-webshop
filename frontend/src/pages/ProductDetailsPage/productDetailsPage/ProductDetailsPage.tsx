@@ -1,4 +1,4 @@
-import './ProductDetailsPage.css'
+import './ProductDetailsPage.css';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {FormEvent, useEffect, useState} from "react";
 import ConfirmationModal from "../../../components/confirmationModal/ConfirmationModal.tsx";
@@ -7,8 +7,8 @@ import axios from "axios";
 import ProductForm from "../../../components/productForm/ProductForm.tsx";
 
 type DeleteProps = {
-    deleteProduct: (id: string) => void,
-    updateProduct: (id: string, product: ProductWithNoId) => void,
+    deleteProduct: (id: string) => void;
+    updateProduct: (id: string, product: ProductWithNoId) => void;
     addToCart: (product: Product) => void;
 };
 
@@ -17,7 +17,7 @@ export default function ProductDetailsPage({deleteProduct, updateProduct, addToC
         name: "",
         price: 0,
         description: ""
-    })
+    });
 
     const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
     const [editable, setEditable] = useState<boolean>(false);
@@ -25,21 +25,20 @@ export default function ProductDetailsPage({deleteProduct, updateProduct, addToC
     const id: string | undefined = params.id;
     const navigate = useNavigate();
 
-
-    const fetchBook = () => {
+    const fetchProduct = () => {
         axios.get(`/api/products/${id}`)
             .then((response) => {
-                setProduct(response.data)
+                setProduct(response.data);
             })
-            .catch((error) => console.log(error.response.data))
-    }
+            .catch((error) => console.log(error.response.data));
+    };
+
     useEffect(() => {
-        fetchBook();
-    }, [])
+        fetchProduct();
+    }, []);
 
     function handleDelete() {
         setShowDeleteModal(true);
-
     }
 
     function handleClose() {
@@ -55,15 +54,15 @@ export default function ProductDetailsPage({deleteProduct, updateProduct, addToC
     }
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        if (id) updateProduct(id, product)
-        setEditable(false)
+        event.preventDefault();
+        if (id) updateProduct(id, product);
+        setEditable(false);
     }
 
     function onEdit() {
-        setEditable(!editable)
+        setEditable(!editable);
         if (editable) {
-            fetchBook()
+            fetchProduct();
         }
     }
 
@@ -75,25 +74,32 @@ export default function ProductDetailsPage({deleteProduct, updateProduct, addToC
             };
             addToCart(productToAdd);
         }
-        navigate("/")
+        navigate("/");
     }
 
-
     return (
-        <article className={"product-details"}>
-            <Link to={"/"}>Back</Link>
-            <div className={"product-detail-container"}>
-                <ProductForm product={product} setProduct={setProduct} handleSubmit={handleSubmit} editable={editable}/>
-                <div className={"product-details-buttons"}>
+        <article className="product-details">
+            <Link to="/">Back</Link>
+            <div className="product-detail-container">
+                <ProductForm
+                    product={product}
+                    setProduct={setProduct}
+                    handleSubmit={handleSubmit}
+                    editable={editable}
+                />
+                <div className="product-details-buttons">
                     <button onClick={onEdit}>{editable ? "Cancel Edit" : "Edit"}</button>
-                    <button className={"delete-button"} onClick={handleDelete}>Delete
-                    </button>
+                    <button className="delete-button" onClick={handleDelete}>Delete</button>
                     <button onClick={handleAddToCart}>Add to Cart</button>
                 </div>
-                {showDeleteModal && <ConfirmationModal handleClose={handleClose}
-                                                       handleDeleteConfirm={handleDeleteConfirm}
-                                                       productToBeDeleted={product}/>}
+                {showDeleteModal && (
+                    <ConfirmationModal
+                        handleClose={handleClose}
+                        handleDeleteConfirm={handleDeleteConfirm}
+                        productToBeDeleted={product}
+                    />
+                )}
             </div>
         </article>
-    )
+    );
 }

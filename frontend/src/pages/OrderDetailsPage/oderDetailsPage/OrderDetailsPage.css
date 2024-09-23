@@ -1,0 +1,53 @@
+.order-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.back-link {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.order-details h2 {
+    margin-bottom: 10px;
+}
+
+.order-details p {
+    margin: 5px 0;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.order-details-buttons {
+    margin-top: 15px;
+}
+
+.delete-button {
+    background-color: #FF4C4C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #D43F3F;
+}
